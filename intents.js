@@ -42,7 +42,7 @@ const intents = {
 
         ${openForPickUpMessage}
       `
-    }  else if (!_.includes(issueLabels, LABEL.OPEN_FOR_PICKUP)) {
+    } else if (!_.includes(issueLabels, LABEL.OPEN_FOR_PICKUP)) {
       response = outdent`
         @${user.login} this issue is not open for pick up.
 
@@ -97,13 +97,7 @@ const intents = {
           response = outdent`
             @${user.login} you are now assigned to this issue and have 12 hours to complete it.
 
-            As soon as you are done, please, make a comment like below, including the id or link to the pull request:
-            \`\`\`
-            @${packageJson.name} PR #1234 is ready for review
-            \`\`\`
-
-            or
-
+            As soon as you are done, please, make a comment like below, including the link to the pull request:
             \`\`\`
             @${packageJson.name} <link to PR> is ready for review
             \`\`\`
@@ -195,7 +189,7 @@ const intents = {
         await context.github.issues.update({
           ...repoService.getOwnerAndRepo(context),
           issue_number: issue.number,
-          labels: [..._.map(updatedLabels, 'name'), LABEL.READY_FOR_REVIEW],
+          labels: [..._.map(updatedLabels, 'name'), LABEL.READY_FOR_REVIEW]
         })
 
         response = outdent`
@@ -243,13 +237,7 @@ const intents = {
 
       #### ready for review
 
-      As soon as you are done, please, make a comment like below, including the id or link to the pull request:
-      \`\`\`
-      @${packageJson.name} PR #1234 is ready for review
-      \`\`\`
-
-      or
-
+      As soon as you are done, please, make a comment like below, including the link to the pull request:
       \`\`\`
       @${packageJson.name} <link to PR> is ready for review
       \`\`\`
