@@ -212,7 +212,7 @@ const intents = {
   },
 
   help: async context => {
-    redirectTo('default')
+    return redirectTo('default')(context)
   },
 
   default: async context => {
