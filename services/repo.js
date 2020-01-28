@@ -47,6 +47,31 @@ const repoService = {
     })
 
     return response.data
+  },
+
+  /**
+   * Retrieves the list repo labels
+   *
+   * @param {import('probot').Context} context probot context
+   *
+   * @returns {Promise<[]>} list of labels
+   */
+  getRepoLabels: async (context) => {
+    const { owner, repo } = repoService.getOwnerAndRepo(context)
+
+    const response = await context.github.issues.listLabelsForRepo({
+      owner,
+      repo,
+      per_page: 100
+    })
+
+    return response.data
+  },
+
+  buildRepoUrl: (context) => {
+    const { owner, repo } = repoService.getOwnerAndRepo(context)
+
+    return `https://github.com/${owner}/${repo}`
   }
 }
 

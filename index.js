@@ -1,5 +1,6 @@
 const packageJson = require('./package.json')
 const intents = require('./intents')
+const initBugHuntBot = require('./bugHuntBot')
 
 /**
  * This is the main entrypoint to your Probot app
@@ -40,4 +41,6 @@ module.exports = app => {
       return intents[intent](context)
     }
   })
+
+  initBugHuntBot(app)
 }
