@@ -72,7 +72,7 @@ const intents = {
             `
           } else {
             response = outdent`
-              @${user.login} ✅ All labels have been successfully added.
+              @${user.login} ✅ Labels have been successfully added.
             `
           }
         }
@@ -147,7 +147,7 @@ const intents = {
             `
           } else {
             response = outdent`
-              @${user.login} ✅ All labels have been successfully removed.
+              @${user.login} ✅ Labels have been successfully removed.
             `
           }
         }
