@@ -32,19 +32,19 @@ const intents = {
     `
     if (!_.includes(issueLabels, BUG_BASH_LABEL)) {
       response = outdent`
-        @${user.login} this issue is not included in the Bug Bash.
+        @${user.login} 🛑 this issue is not included in the Bug Bash.
 
         ${openForPickUpMessage}
       `
     } else if (issue.state !== 'open') {
       response = outdent`
-        @${user.login} this issue is closed and cannot be picked up.
+        @${user.login} 🛑 this issue is closed and cannot be picked up.
 
         ${openForPickUpMessage}
       `
     } else if (!_.includes(issueLabels, LABEL.OPEN_FOR_PICKUP)) {
       response = outdent`
-        @${user.login} this issue is not open for pick up.
+        @${user.login} 🛑 this issue is not open for pick up.
 
         ${openForPickUpMessage}
       `
@@ -72,14 +72,14 @@ const intents = {
     if (!response) {
       if (inWorkIssues.length > 0) {
         response = outdent`
-          @${user.login} you have some issues assigned which are not completed yet, see ${inWorkIssuesStr}.
+          @${user.login} 🛑 you have some issues assigned which are not completed yet, see ${inWorkIssuesStr}.
 
           As per our Bug Bash rules you may work only at one issue at a time.
           Please, complete other issues first or unassign yourself before picking up a new issue.
         `
       } else if (feedbackIssues.length > 0) {
         response = outdent`
-          @${user.login} you have some issues which require fixes, see ${feedbackIssuesStr}.
+          @${user.login} 🛑 you have some issues which require fixes, see ${feedbackIssuesStr}.
 
           As per our Bug Bash rules you should give the priority to the issues with feedback.
           Please, complete other issues first as per feedback provided or unassign yourself before picking up a new issue.
@@ -96,7 +96,7 @@ const intents = {
           })
 
           response = outdent`
-            @${user.login} you are now assigned to this issue and have 12 hours to complete it.
+            @${user.login} ✅ you are now assigned to this issue and have 12 hours to complete it.
 
             As soon as you are done, please, make a comment like below, including the link to the pull request:
             \`\`\`
@@ -106,7 +106,7 @@ const intents = {
         } catch (err) {
           context.log.error(`Error during assigning user @${user.login} to the issue #${issue.number}.`, err)
           response = outdent`
-            @${user.login} Some error happened when trying to assign you to this issue, please try one more time or contact someone from the Topcoder team to assist you.
+            @${user.login} 🛑 Some error happened when trying to assign you to this issue, please try one more time or contact someone from the Topcoder team to assist you.
           `
         }
       }
@@ -126,13 +126,13 @@ const intents = {
 
     if (!_.includes(_.map(issue.assignees, 'login'), user.login)) {
       response = outdent`
-        @${user.login} I cannot unassign you from this issue because you are not assigned.
+        @${user.login} 🛑 I cannot unassign you from this issue because you are not assigned.
       `
     }
 
     if (!response && _.includes(issueLabels, LABEL.ACCEPTED)) {
       response = outdent`
-        @${user.login} I cannot unassign you from this issue because it's already "accepted".
+        @${user.login} 🛑 I don't want unassign you from this issue because it's already "accepted".
 
         Most likely you don't want to be unassigned from the issue which is already accepted, but in case you do, please reach to someone from the Topcoder team to assist you.
       `
@@ -152,14 +152,14 @@ const intents = {
         })
 
         response = outdent`
-          @${user.login} you have been unassigned from this issue.
+          @${user.login} ✅ you have been unassigned from this issue.
 
           Now you may pick up another issue which is open for pickup if you like to.
         `
       } catch (err) {
         context.log.error(`Error during unassigning user @${user.login} from the issue #${issue.number}.`, err)
         response = outdent`
-          @${user.login} Some error happened when trying to unassign you from this issue, please try one more time or contact someone from the Topcoder team to assist you.
+          @${user.login} 🛑 Some error happened when trying to unassign you from this issue, please try one more time or contact someone from the Topcoder team to assist you.
         `
       }
     }
@@ -177,7 +177,7 @@ const intents = {
 
     if (!_.includes(_.map(issue.assignees, 'login'), user.login)) {
       response = outdent`
-        @${user.login} You cannot mark the issue as \`Ready for Review\` as you are not assigned to this issue.
+        @${user.login} 🛑 You cannot mark the issue as \`Ready for Review\` as you are not assigned to this issue.
       `
     }
 
@@ -194,14 +194,14 @@ const intents = {
         })
 
         response = outdent`
-          @${user.login} this issue is marked as \`Ready for Review\`.
+          @${user.login} ✅ this issue is marked as \`Ready for Review\`.
 
           Now you may pick up another issue which is open for pickup if you like to.
         `
       } catch (err) {
         context.log.error(`Error during marking the issue #${issue.number} as \`Ready for Review\`.`, err)
         response = outdent`
-          @${user.login} Some error happened when trying to mark this issues as \`Ready for Review\`, please try one more time or contact someone from the Topcoder team to assist you.
+          @${user.login} 🛑 Some error happened when trying to mark this issues as \`Ready for Review\`, please try one more time or contact someone from the Topcoder team to assist you.
         `
       }
     }
