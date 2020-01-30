@@ -18,7 +18,9 @@
     "start": "probot run ./index.js",
     "lint": "standard --fix",
     "test": "jest && standard",
-    "test:watch": "jest --watch --notify --notifyMode=change --coverage"
+    "test:watch": "jest --watch --notify --notifyMode=change --coverage",
+    "deploy:prod": "git push heroku-prod master:master",
+    "deploy:dev": "git push heroku-dev dev:master"
   },
   "dependencies": {
     "lodash": "^4.17.15",
