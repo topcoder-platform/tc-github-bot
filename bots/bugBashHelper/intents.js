@@ -2,7 +2,7 @@ const config = require('config')
 const packageJson = require('./package.json')
 const _ = require('lodash')
 const outdent = require('outdent')
-const repoService = require('./services/repo')
+const repoService = require('../../services/repo')
 
 const LABEL = config.get('LABEL')
 const BUG_BASH_LABEL = config.get('BUG_BASH_LABEL')

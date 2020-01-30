@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const outdent = require('outdent')
-const repoService = require('./services/repo')
+const repoService = require('../../services/repo')
 
 const BOT_NAME = 'bug-hunt-helper'
 
@@ -170,7 +170,7 @@ const intents = {
   },
 
   default: async context => {
-    const user = _.get(context, 'payload.comment.user')
+    const user = _.get(context, 'payload.comment.user') || _.get(context, 'payload.issue.user')
     const params = context.issue({
       body: outdent`
       Hi @${user.login}.
