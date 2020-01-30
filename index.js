@@ -1,5 +1,6 @@
 const initBugHuntBot = require('./bots/bugHuntHelper')
 const initBugBashBot = require('./bots/bugBashHelper')
+const initBugVerificationBot = require('./bots/bugVerificationHelper')
 
 /**
  * This is the main entrypoint to your Probot app
@@ -11,4 +12,5 @@ module.exports = app => {
 
   initBugBashBot(app)
   initBugHuntBot(app)
+  initBugVerificationBot(app)
 }
