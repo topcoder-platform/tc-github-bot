@@ -10,8 +10,8 @@ const LABEL = {
   FEEDBACK: 'QA_Feedback',
   ACCEPTED: 'QA_Accepted',
   READY_FOR_REVIEW: 'QA_ReadyForReview',
-  PASS: 'QA Pass',
-  FAIL: 'QA Fail'
+  PASS: 'QA_Pass',
+  FAIL: 'QA_Fail'
 }
 
 module.exports = {

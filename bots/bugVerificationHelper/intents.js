@@ -79,7 +79,7 @@ const intents = {
           response = outdent`
             @${user.login} ✅ you are now assigned to this issue and have 2 hours to complete it.
 
-            Verify the issue. You must take screenshots/videos/or both of your verification based on the issue. Add your comments to the issue with links to your videos. You can add the screenshots directly to the comments.
+            Verify the issue. You must attach screenshots/videos of your verification to your comment.
             As soon as you are ready, add one of the comments bellow to mark this issue as passed or failed:
 
             \`\`\`
