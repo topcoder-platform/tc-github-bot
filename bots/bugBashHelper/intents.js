@@ -1,11 +1,11 @@
-const config = require('config')
 const _ = require('lodash')
 const outdent = require('outdent')
 const repoService = require('../../services/repo')
-const { BOT_NAME } = require('./constants')
-
-const LABEL = config.get('LABEL')
-const BUG_BASH_LABEL = config.get('BUG_BASH_LABEL')
+const {
+  BOT_NAME,
+  LABEL,
+  BUG_BASH_LABEL
+} = require('./constants')
 
 /**
  * Redirect intent to another one.
@@ -51,7 +51,8 @@ const intents = {
     }
 
     try {
-      assignedIssues = await repoService.getBugBashIssues(context, {
+      assignedIssues = await repoService.getRepoOpenIssues(context, {
+        labels: BUG_BASH_LABEL,
         assignee: user.login
       })
     } catch (err) {
