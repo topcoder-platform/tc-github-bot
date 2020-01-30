@@ -1,8 +1,8 @@
 const config = require('config')
-const packageJson = require('./package.json')
 const _ = require('lodash')
 const outdent = require('outdent')
 const repoService = require('../../services/repo')
+const { BOT_NAME } = require('./constants')
 
 const LABEL = config.get('LABEL')
 const BUG_BASH_LABEL = config.get('BUG_BASH_LABEL')
@@ -99,7 +99,7 @@ const intents = {
 
             As soon as you are done, please, make a comment like below, including the link to the pull request:
             \`\`\`
-            @${packageJson.name} <link to PR> is ready for review
+            @${BOT_NAME} <link to PR> is ready for review
             \`\`\`
           `
         } catch (err) {
@@ -225,21 +225,21 @@ const intents = {
 
       To assign yourself to the issue make a comment:
       \`\`\`
-      @${packageJson.name} assign me
+      @${BOT_NAME} assign me
       \`\`\`
 
       #### unassign
 
       To unassign yourself from the issue make a comment:
       \`\`\`
-      @${packageJson.name} unassign me
+      @${BOT_NAME} unassign me
       \`\`\`
 
       #### ready for review
 
       As soon as you are done, please, make a comment like below, including the link to the pull request:
       \`\`\`
-      @${packageJson.name} <link to PR> is ready for review
+      @${BOT_NAME} <link to PR> is ready for review
       \`\`\`
     `
     })
