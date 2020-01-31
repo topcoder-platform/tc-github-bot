@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const outdent = require('outdent')
-const repoService = require('./services/repo')
+const repoService = require('../../services/repo')
 
 const BOT_NAME = 'bug-hunt-helper'
 
@@ -72,7 +72,7 @@ const intents = {
             `
           } else {
             response = outdent`
-              @${user.login} ✅ All labels have been successfully added.
+              @${user.login} ✅ Labels have been successfully added.
             `
           }
         }
@@ -147,7 +147,7 @@ const intents = {
             `
           } else {
             response = outdent`
-              @${user.login} ✅ All labels have been successfully removed.
+              @${user.login} ✅ Labels have been successfully removed.
             `
           }
         }
@@ -170,7 +170,7 @@ const intents = {
   },
 
   default: async context => {
-    const user = _.get(context, 'payload.comment.user')
+    const user = _.get(context, 'payload.comment.user') || _.get(context, 'payload.issue.user')
     const params = context.issue({
       body: outdent`
       Hi @${user.login}.

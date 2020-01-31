@@ -1,15 +1,15 @@
 const _ = require('lodash')
-const intents = require('./bugHuntIntents')
+const intents = require('./intents')
+const {
+  BOT_MENTION_REGEXP,
+  BOT_INTENT_REGEXP
+} = require('./constants')
 
 /**
  * This is the main entrypoint to your Probot app
  * @param {import('probot').Application} app
  */
 module.exports = app => {
-  const BOT_NAME = 'bug-hunt-helper'
-  const BOT_MENTION_REGEXP = new RegExp(`\\s*@${BOT_NAME}`, 'i')
-  const BOT_INTENT_REGEXP = new RegExp(`\\s*@${BOT_NAME}[^\\n]*\\s+(help|add label|remove label):?(.*)[^\\n]*`, 'i')
-
   app.on(['issues.opened', 'issue_comment.created'], async context => {
     const payload = context.payload
     const body = _.get(payload, 'comment.body') || _.get(payload, 'issue.body')

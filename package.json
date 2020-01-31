@@ -18,10 +18,11 @@
     "start": "probot run ./index.js",
     "lint": "standard --fix",
     "test": "jest && standard",
-    "test:watch": "jest --watch --notify --notifyMode=change --coverage"
+    "test:watch": "jest --watch --notify --notifyMode=change --coverage",
+    "deploy:prod": "git push heroku-prod master:master",
+    "deploy:dev": "git push heroku-dev dev:master"
   },
   "dependencies": {
-    "config": "^3.2.4",
     "lodash": "^4.17.15",
     "outdent": "^0.7.0",
     "probot": "^9.5.3"

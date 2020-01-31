@@ -1,4 +1,3 @@
-const config = require('config')
 const _ = require('lodash')
 
 const repoService = {
@@ -25,25 +24,22 @@ const repoService = {
   },
 
   /**
-   * Retrieves the list of Bug Bash issues
+   * Retrieves the list of open repository issues
    *
    * @param {import('probot').Context} context probot context
    * @param {Object} filter filter for issues
    *
    * @returns {Promise<[]>} list of issues
    */
-  getBugBashIssues: async (context, filter) => {
+  getRepoOpenIssues: async (context, filter) => {
     const { owner, repo } = repoService.getOwnerAndRepo(context)
-
-    const labels = config.get('BUG_BASH_LABEL') + (filter.labels ? `,${filter.labels}` : '')
 
     const response = await context.github.issues.listForRepo({
       owner,
       repo,
-      state: 'open',
-      labels,
       per_page: 100,
-      ...filter
+      ...filter,
+      state: 'open'
     })
 
     return response.data
