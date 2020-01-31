@@ -28,6 +28,6 @@ workflows:
             branches:
               only: dev
       - deployProd:
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
