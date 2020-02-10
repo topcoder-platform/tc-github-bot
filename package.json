@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "Helper bot to handle Bug Bash challenge.",
-  "author": "Maksym Mykhailenko <maxceem@gmail.com>",
-  "license": "ISC",
   "repository": "https://github.com/maxceem/bug-bash-helper.git",
   "homepage": "https://github.com/maxceem/bug-bash-helper",
   "bugs": "https://github.com/maxceem/bug-bash-helper/issues",
@@ -18,9 +16,7 @@
     "start": "probot run ./index.js",
     "lint": "standard --fix",
     "test": "jest && standard",
-    "test:watch": "jest --watch --notify --notifyMode=change --coverage",
-    "deploy:prod": "git push heroku-prod master:master",
-    "deploy:dev": "git push heroku-dev dev:master"
+    "test:watch": "jest --watch --notify --notifyMode=change --coverage"
   },
   "dependencies": {
     "lodash": "^4.17.15",
