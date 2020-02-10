@@ -11,21 +11,21 @@ To let participants assign issues and labels in the repositories we should grant
 
 To overcome such limitation of the GitHub permission system we can use bots, which would assign participants to issues and add labels for them without granting them `write` permission to the repository. These bots may also enforce various challenge rules. The bot itself has very limited access to the repositories, so it's very safe to use it:
 
-![](docs/images/bot-permissions.png)
+<img src="docs/images/bot-permissions.png" width="487">
 
 For example, we have "Bug Bash Challenge" where we have some set of issues that are marked as `Open for Pickup`. Any participant may assign such an issue, fix it, create a PR and mark issues as `Ready for Review`. Using bot users may assign them issues without `write` permission:
 
 <details><summary>🎥 View demo video</summary>
 
-![bug bash helper demo](docs/images/bot-demo.gif)
+<img src="docs/images/bot-demo.gif" width="800">
 
 </details><br>
 
-![](docs/images/bot-assign-success.png)
+<img src="docs/images/bot-assign-success.png" width="762">
 
 The bot can also enforce rules, for example working only on one issue at a time:
 
-![](docs/images/bot-one-issue-error.png)
+<img src="docs/images/bot-one-issue-error.png" width="776">
 
 ## Setup
 
