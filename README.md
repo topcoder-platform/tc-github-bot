@@ -27,6 +27,23 @@ The bot can also enforce rules, for example working only on one issue at a time:
 
 <img src="docs/images/bot-one-issue-error.png" width="776">
 
+## How it works?
+
+1. We install **GitHub App** to any repo we want to enable our bots.
+
+2. **GitHub App** is listening to a limited set of events related to issues triggers a Webhook URL which points to our **NodeJs App (bot)**.
+   The full list of events which we listen at the moment:
+
+  ![](docs/images/github-app-events.png)
+
+3. **NodeJs App (bot)** is the code which is stored in this repository, and here is where the actual work happens:
+
+   - **GitHub App** is calling it using Webhook URL
+   - **NodeJs App** checks if comment/issue mention any of the supported bots and if so, extracts the command to perform
+   - for every command **NodeJs App** determines if such a command is allowed by calling **GitHub API** to get the current **up to date** situation. If all good, **NodeJs App** uses **GitHub API** to perform actions with the repository like assign/unassign users, add/remove labels and to post a reply comment from the bot.
+
+![](docs/images/arch-diagram.svg)
+
 ## Setup
 
 To run the bot we should do 3 things:
