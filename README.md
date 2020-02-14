@@ -34,7 +34,7 @@ The bot can also enforce rules, for example working only on one issue at a time:
 2. **GitHub App** is listening to a limited set of events related to issues triggers a Webhook URL which points to our **NodeJs App (bot)**.
    The full list of events which we listen at the moment:
 
-  ![](docs/images/github-app-events.png)
+   ![](docs/images/github-app-events.png)
 
 3. **NodeJs App (bot)** is the code which is stored in this repository, and here is where the actual work happens:
 
