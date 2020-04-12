@@ -7,8 +7,16 @@ const initBugVerificationBot = require('./bots/bugVerificationHelper')
  * @param {import('probot').Application} app
  */
 module.exports = app => {
-  // Your code here
   app.log('Yay, the app was loaded!')
+
+  const router = app.route(process.env.WEBHOOK_PATH)
+
+  // health check
+  router.get(`/health`, (req, res) => {
+    res.status(200).send({
+      message: 'All-is-well',
+    });
+  });
 
   initBugBashBot(app)
   initBugHuntBot(app)
