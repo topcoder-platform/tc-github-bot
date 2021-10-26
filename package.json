@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
-    "outdent": "^0.7.0",
+    "outdent": "^0.8.0",
     "probot": "^9.5.3"
   },
   "devDependencies": {
